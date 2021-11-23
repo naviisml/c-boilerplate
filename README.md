@@ -2,6 +2,7 @@
 
 ## Features
 
+- Support for as many sub-folders as you want in `srcs/`
 - Uses Makefile for compilation
 - Rich configuration located in the `Makefile`
 - Including `srcs/` and `includes/` folder for the source files.
