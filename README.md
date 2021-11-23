@@ -1,13 +1,13 @@
 # C Boilerplate
 
-## Features
+This is a C Boilerplate for my future C projects on Codam. This boilerplate allows me to start projects swiftly with a pre-made template.
 
-- Support for as many sub-folders as you want in `srcs/`
-- Uses Makefile for compilation
-- Rich configuration located in the `Makefile`
-- Including `srcs/` and `includes/` folder for the source files.
-- Special `objects/` folder for `.o` files
-- Seperated `build/` folder the final build files
+To use this boilerplate, simply edit the basic configuration in the Makefile and add your files to the SOURCE_FILES list. After that, run the ’all‘ command.
+
+## Requirements
+
+- Make
+- C
 
 ## Commands
 
