@@ -6,9 +6,16 @@ AR_FLAGS = -rcs
 COMPILER = @gcc
 COMPILER_FLAGS = -Wall -Werror -Wextra
 
+# Configuration...
+BUILD_FOLDER	=	./build
+BUILD_FILES		=	libft.a
+
 # Library...
-LIBRARY			=	libft
-LIBRARY_PUTPUT	=	libft.a
+LIBRARY			=	libft.a
+LIBRARY_FOLDER	=	./libft
+LIBARY_BUILD	=	@$(MAKE) bonus -C $(LIBRARY_FOLDER) \
+					@mkdir -p $(BUILD_FOLDER) \
+					@mv $(addprefix $(LIBRARY_FOLDER)/, $(LIBRARY)) $(addprefix $(BUILD_FOLDER)/, $(LIBRARY)) \
 
 # Source Files...
 SOURCE_FOLDER	=	./srcs
@@ -19,7 +26,7 @@ EXTRA_FOLDERS	=	$(SOURCE_FOLDER)
 OBJECT_FOLDER	=	./objects
 OBJECT_FILES	=	$(addprefix $(OBJECT_FOLDER)/, $(addprefix $(SOURCE_FOLDER)/, $(SOURCE_FILES:.c=.o)))
 
-.PHONY =  $(NAME) all library clean fclean re dev
+.PHONY =  $(NAME) $(LIBRARY) all clean fclean re dev
 
 # Compile the .c files to .o files...
 $(OBJECT_FOLDER)/%.o: %.c
@@ -30,9 +37,14 @@ $(OBJECT_FOLDER)/%.o: %.c
 # Compile the program...
 $(NAME): $(OBJECT_FILES)
 	@echo "Building $(NAME)... (100%)"
-	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) -o $(NAME)
+	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) $(addprefix $(BUILD_FOLDER)/, $(BUILD_FILES)) -o $(NAME)
 
-all: $(NAME)
+# Compile a library...
+$(LIBRARY):
+	@echo "Compiling $(LIBRARY)..."
+	$(LIBARY_BUILD)
+
+all: $(LIBRARY) $(NAME)
 
 # Remove the `object` folder and files...
 clean:
@@ -40,7 +52,7 @@ clean:
 
 # Remove the `object` and `build` folder and files...
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(BUILD_FOLDER)
 
 # Clean the program up and re-compile it...
 re: fclean all
