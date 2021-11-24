@@ -6,9 +6,7 @@ AR_FLAGS = -rcs
 COMPILER = @gcc
 COMPILER_FLAGS = -Wall -Werror -Wextra
 
-# Library...
-LIBRARY			=	libft
-LIBRARY_PUTPUT	=	libft.a
+# Configuration
 
 # Source Files...
 SOURCE_FOLDER	=	./srcs
@@ -19,7 +17,7 @@ EXTRA_FOLDERS	=	$(SOURCE_FOLDER)
 OBJECT_FOLDER	=	./objects
 OBJECT_FILES	=	$(addprefix $(OBJECT_FOLDER)/, $(addprefix $(SOURCE_FOLDER)/, $(SOURCE_FILES:.c=.o)))
 
-.PHONY =  $(NAME) all library clean fclean re dev
+.PHONY =  $(NAME) all clean fclean re dev
 
 # Compile the .c files to .o files...
 $(OBJECT_FOLDER)/%.o: %.c
@@ -29,7 +27,7 @@ $(OBJECT_FOLDER)/%.o: %.c
 
 # Compile the program...
 $(NAME): $(OBJECT_FILES)
-	@echo "Building $(NAME)... (100%)"
+	@echo "Building \t$(NAME)... (100%)"
 	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) -o $(NAME)
 
 all: $(NAME)
@@ -47,5 +45,5 @@ re: fclean all
 
 # Re-compile the program and run the script...
 dev: re
-	@echo "Running $(NAME)..."
+	@echo "Running \t$(NAME)..."
 	@./$(NAME)
