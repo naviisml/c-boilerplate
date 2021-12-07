@@ -30,3 +30,5 @@ To remove both the `objects/` files, the `build` files and the compiled program 
 ```
 make fclean
 ```
+
+<div align=center>Made with tons of ☕ and ❤️ by <a href="https://github.com/naviisml">Navi</a></div>
