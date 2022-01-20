@@ -6,8 +6,8 @@ To use this boilerplate, simply edit the basic configuration in the Makefile and
 
 ## Requirements
 
-- Make
-- C
+- gcc
+- make
 
 ## Commands
 
