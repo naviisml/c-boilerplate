@@ -6,11 +6,11 @@
 /*   By: nismail <nismail@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/23 00:26:25 by nismail       #+#    #+#                 */
-/*   Updated: 2021/11/23 00:50:05 by nismail       ########   odam.nl         */
+/*   Updated: 2022/01/20 12:38:21 by nismail       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_example.h"
+#include <ft_example.h>
 
 int	main(void)
 {

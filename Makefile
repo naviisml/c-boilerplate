@@ -4,7 +4,7 @@ AR = @ar
 AR_FLAGS = -rcs
 
 COMPILER = @gcc
-COMPILER_FLAGS = -Wall -Werror -Wextra
+COMPILER_FLAGS = -Wall -Werror -Wextra -Iincludes/
 
 # Configuration
 
