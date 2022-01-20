@@ -8,9 +8,17 @@ COMPILER_FLAGS = -Wall -Werror -Wextra
 
 # Configuration
 
+# Libft...
+LIBFT			=	libft.a
+LIBFT_FOLDER	=	./libraries/libft
+
 # Source Files...
 SOURCE_FOLDER	=	./srcs
 SOURCE_FILES	=	ft_example.c
+
+# Build Folder
+BUILD_FOLDER	=	./build
+BUILD_FILES		=	$(addprefix $(BUILD_FOLDER)/, $(LIBFT))
 
 # Object Files...
 EXTRA_FOLDERS	=	$(SOURCE_FOLDER)
@@ -26,9 +34,16 @@ $(OBJECT_FOLDER)/%.o: %.c
 	@$(COMPILER) $(COMPILER_FLAGS) -c $< -o $@
 
 # Compile the program...
-$(NAME): $(OBJECT_FILES)
+$(NAME): $(LIBFT) $(OBJECT_FILES)
 	@echo "Building \t$(NAME)... (100%)"
-	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) -o $(NAME)
+	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) $(BUILD_FILES) -o $(NAME)
+
+# Compile Libft...
+$(LIBFT):
+	@echo "Compiling \t$(LIBFT)..."
+	@$(MAKE) all -C $(LIBFT_FOLDER)
+	@mkdir -p $(BUILD_FOLDER)
+	@mv $(addprefix $(LIBFT_FOLDER)/, $(LIBFT)) $(addprefix $(BUILD_FOLDER)/, $(LIBFT))
 
 all: $(NAME)
 
